@@ -624,6 +624,74 @@
             .intro-image { min-width: 100%; }
             .step-container, .action-grid { grid-template-columns: 1fr; }
         }
+
+        /* Popup Styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .popup-content {
+            background: #fff;
+            width: 90%;
+            max-width: 550px;
+            max-height: 85vh;
+            overflow-y: auto;
+            border-radius: 20px;
+            position: relative;
+            padding: 40px 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        .popup-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            font-weight: bold;
+        }
+        .popup-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .popup-header .badge {
+            background: #e53e3e;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .popup-header h2 {
+            color: var(--primary-color);
+            margin-top: 10px;
+            font-size: 1.5rem;
+            line-height: 1.4;
+        }
+        .popup-body h4 {
+            color: var(--accent-color);
+            margin: 15px 0 8px 0;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 10px;
+        }
+        .popup-body p, .popup-body li { font-size: 0.95rem; margin-bottom: 5px; }
+        .popup-body ul { list-style: none; padding-left: 0; }
+        .popup-body li::before { content: "•"; color: var(--accent-color); margin-right: 8px; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -644,6 +712,66 @@
             </ul>
         </nav>
     </header>
+
+    <!-- 2026 썸머스쿨 팝업창 -->
+    <div id="summer-popup" class="popup-overlay">
+        <div class="popup-content">
+            <span class="popup-close" id="close-popup">&times;</span>
+            <div class="popup-header">
+                <p style="color: #64748b; font-size: 0.9rem; font-weight: 600; margin-bottom: 5px;">2026 대입 성공을 위한 마지막 퍼즐</p>
+                <h2 style="color: var(--primary-color); font-size: 1.8rem; font-weight: 800; margin-bottom: 10px;">2026 이든 썸머스쿨!</h2>
+                <p style="color: var(--accent-color); font-size: 1.1rem; font-weight: 700;">파이널 4주, 기적은 시스템이 만듭니다.</p>
+            </div>
+            
+            <div class="popup-body">
+                <div style="text-align: center; margin: 25px 0; padding: 20px; background: #fff5f5; border-radius: 12px; border: 1px solid #fed7d7;">
+                    <h3 style="font-size: 1.25rem; font-weight: 700; color: #c53030; margin-bottom: 10px;">의지력에 아이의 성적을 맡기시겠습니까?</h3>
+                    <p style="color: #4a5568; font-size: 0.95rem; line-height: 1.6; word-break: keep-all;">
+                        무더위와 누적된 피로로 생활 리듬이 붕괴되는 여름방학,<br>
+                        흔들리는 정신력을 잡아줄 <strong>강력한 통제 시스템</strong>이 필요할 때입니다.
+                    </p>
+                </div>
+
+                <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; padding: 20px;">
+                    <h4 style="color: var(--primary-color); font-size: 1.1rem; font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+                        <span>📋</span> 모집 요강
+                    </h4>
+                    <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem; line-height: 1.5;">
+                        <tr style="border-bottom: 1px solid #e2e8f0;">
+                            <th style="text-align: left; padding: 12px 5px; width: 90px; color: #64748b;">모집 기간</th>
+                            <td style="padding: 12px 5px; font-weight: 600;">2026.05.26(목) ~ 선착순 마감</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e2e8f0;">
+                            <th style="text-align: left; padding: 12px 5px; color: #64748b;">입학일</th>
+                            <td style="padding: 12px 5px; font-weight: 600;">각 학교 방학일로부터 2일 이내</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e2e8f0;">
+                            <th style="text-align: left; padding: 12px 5px; color: #64748b;">모집 대상</th>
+                            <td style="padding: 12px 5px; font-weight: 600;">고1 · 고2 · 고3 · N수생</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e2e8f0;">
+                            <th style="text-align: left; padding: 12px 5px; color: #64748b;">개강</th>
+                            <td style="padding: 12px 5px; font-weight: 600;">7월 순차 개강</td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left; padding: 12px 5px; color: #64748b;">접수</th>
+                            <td style="padding: 12px 5px; font-weight: 600;">현장 방문 접수 또는 온라인 신청서 접수</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="cta-group" style="margin-top: 30px; flex-direction: column;">
+                <a href="https://metastudy25.github.io/2026_Summerschool/" target="_blank" class="cta-button" id="popup-apply-btn" style="width: 100%; text-align: center; padding: 18px; font-size: 1.1rem;">사전 예약 문의하기 (바로가기)</a>
+            </div>
+            
+            <div style="text-align: right; margin-top: 20px;">
+                <label style="font-size: 0.85rem; cursor: pointer; color: #666;">
+                    <input type="checkbox" id="hide-today"> 오늘 하루 보지 않기
+                </label>
+            </div>
+        </div>
+    </div>
 
     <section class="hero">
         <h1>관리에 '진짜 학습'을 더하다.<br>2026년 수능은 이든의 시간표대로.</h1>
@@ -707,27 +835,23 @@
             </div>
             <div class="intro-text-body">
                 <h3>[원장 인사말] 관리에 ‘진짜 학습’을 더하다, 이든의 약속</h3>
-                <p>안녕하세요, 이든관리형학습센터입니다.</p>
-                <p>저는 대치동 20년을 포함해 지난 30년간 대입 최전선에서 수많은 합격 스토리를 만들어왔습니다. 강남구청 인강 강의, 경향신문 영어 모의고사 출제 등 공신력 있는 필드의 노하우와 6년간 독학관리학원을 운영하며 얻은 현장 데이터의 결론은 단 하나입니다.</p>
-                <p><strong>"무작정 오래 앉아있는 노력은 정답이 아닙니다. 맹목적인 ‘반복’을 머리 밖으로 끄집어내는 ‘인출’로 바꾸고, 겉만 묶어두는 ‘생활 관리’에 학습의 맥을 짚는 ‘티코칭’을 더해야 비로소 성적은 움직입니다."</strong></p>
-                <p>이든은 단순히 가두어 두는 통제형 관리를 넘어, 대치동의 전문성에 독창적인 시스템을 결합한 새로운 패러다임을 제시합니다.</p>
+                <p>안녕하십니까, 이든관리형학습센터 원장 황붕주입니다.</p>
+                <p>대치동 20년을 포함해 지난 30년간 대입 최전선(강남구청 인강 강의, 모의고사 출제 등)에서 수많은 합격 스토리를 만들며 얻은 결론은 단 하나입니다. 무작정 오래 앉아있는 맹목적인 ‘반복’이 아닌 머리 밖으로 꺼내는 ‘인출’, 그리고 단순한 생활 관리에 학습의 맥을 짚는 ‘티코칭’이 더해져야만 성적은 움직입니다. 이든은 대치동의 전문성과 독창적 시스템을 결합한 새로운 패러다임을 제시합니다.</p>
 
                 <div class="intro-philosophy" style="background-color: #fff;">
-                    <h4>1. 메타인지 기반의 효율적 자기주도학습</h4>
-                    <p>공부법을 180도 바꾸라는 무리한 강요는 학생을 헤매게 만들 뿐입니다. 진짜 공부는 내가 무엇을 알고 모르는지 정확히 인지하는 '메타인지'에서 출발해야 합니다. 이든은 학생의 현재 스타일을 면밀히 분석해 개선점을 점진적으로 교정하며, 무조건 열심히만 하는 공부가 아닌 '가장 효율적인 학습'으로 성적을 도출합니다.</p>
+                    <h4>메타인지 기반의 초효율 자기주도학습</h4>
+                    <p>무리한 공부법 강요 대신, 내가 무엇을 모르는지 정확히 아는 '메타인지'에서 출발합니다. 학생의 현재 스타일을 분석하고 점진적으로 교정하여 가장 효율적인 학습으로 성적을 도출합니다.</p>
                 </div>
 
                 <div class="intro-philosophy">
-                    <h4>2. 빈틈없는 성적 향상 파이프라인, ‘EDEN 시리즈’</h4>
-                    <p>엄격한 생활 관리와 양질의 질의응답은 독학관리의 당연한 '기본'입니다. 이든은 이 확고한 기본기 위에 메타인지와 AI 빅데이터 기술을 결합했습니다. 단순한 관리를 넘어, 실제 성적 향상을 강제하는 8단계의 압도적 커리큘럼인 이든만의 'EDEN 시리즈'를 구축했습니다.</p>
-                    <p>저의 30년 대입 지도 직관과 정밀한 시스템이 만나, 단순 반복이 아닌 스스로 개념을 꺼내어 확인하는 '인출 중심의 역산 설계 코칭'으로 2026년 대입의 완벽한 결과를 만듭니다.</p>
+                    <h4>빈틈없는 성적 향상 파이프라인, ‘EDEN 시리즈’</h4>
+                    <p>엄격한 생활 관리라는 기본기 위에 메타인지와 AI 빅데이터 기술을 결합했습니다. 성적 향상을 강제하는 8단계 커리큘럼 'EDEN 시리즈'와 저의 30년 노하우가 담긴 '인출 중심 코칭'으로 2026년 대입의 완벽한 결과를 만듭니다.</p>
                 </div>
 
-                <p style="margin-top: 30px;">이든관리형학습센터는 겉만 통제하는 학원이 아닙니다. 확실한 생활 관리라는 기본기 위에 메타인지 학습법, ‘EDEN 시리즈’, 그리고 본질을 뚫는 티코칭을 더해 목표 대학의 문을 열어내겠습니다.</p>
-                <p>대치동 최고의 노하우와 압도적인 시스템으로, 믿고 맡겨주신 기대에 반드시 최고의 결과로 보답하겠습니다. 감사합니다.</p>
+                <p style="margin-top: 30px;">단순히 겉만 가두어 두는 학원이 아닙니다. 대치동 최고의 노하우와 압도적인 시스템으로, 믿고 맡겨주신 기대에 반드시 최고의 결과로 보답하겠습니다. 감사합니다.</p>
                 
                 <div class="intro-signature">
-                    이든관리형학습센터 원장 올림
+                    이든관리형학습센터 원장 황붕주 올림
                 </div>
             </div>
         </div>
@@ -810,12 +934,12 @@
                 <div class="num-title">5. EDEN_KEY</div>
                 <h4>약점 정밀 타격</h4>
                 <div class="highlight">"1등급의 문을 여는 마스터키, 핀셋 타격"</div>
-                <p>70만 개 이상의 기출문제를 분석하여 수험생들이 가장 많이 틀리는 고난도 킬러/준킬러 문항만을 엄선, 치명적인 약점만을 집중적으로 파괴합니다.</p>
+                <p>퍼즐화된 수능에 대비하여 70만 개 이상의 기출문제를 분석하여 수험생들이 가장 많이 틀리는 고난도 킬러/준킬러 문항만을 엄선, 치명적인 약점만을 집중적으로 파괴합니다.</p>
             </div>
             <div class="eden-item">
                 <div class="num-title">6. EDEN_SYNC (완벽한 기출 동기화)</div>
                 <div class="highlight">"과거의 기출과 현재의 EBS를 잇는 가장 완벽한 주파수"</div>
-                <p>최근 20년간 누적된 수능·학평·도교육청 기출문제와 올해의 EBS 수능특강 및 수능완성의 방대한 데이터를 첨단 AI가 심층 분석하여 완벽하게 동기화(SYNC)했습니다.<br><br>단순한 문제 풀이를 넘어, 수능특강 단원별로 맞춤형 기출 분석을 제공하고 월 단위 출제 경향을 AI로 집중 타격합니다. 특히 지루한 텍스트 위주의 학습에서 벗어나 플래시카드, 퀴즈, 슬라이드, 영상 등 뇌에 가장 잘 각인되는 다각적인 입체 포맷을 제공하여 지루할 틈 없는 수능 최적화 완전 학습을 실현합니다.</p>
+                <p>첨단 AI가 20년 누적 기출문제와 올해 EBS 연계교재를 심층 분석하여 완벽하게 동기화(SYNC)했습니다. 단순한 문제 풀이를 넘어 EBS 단원별 맞춤 기출 분석과 월별 출제 경향을 집중 타격합니다. 또한 퀴즈, 영상, 플래시카드 등 뇌에 최적화된 다각적인 입체 포맷을 제공하여 지루할 틈 없는 수능 완전 학습을 실현합니다.</p>
             </div>
             <div class="eden-item">
                 <div class="num-title">7. EDEN_REAL</div>
@@ -843,35 +967,44 @@
         <div class="life-grid">
             <!-- 시그너처 1: 1:1 인출확인 PT -->
             <div class="life-item">
-                <div class="item-title">1. 1:1 인출확인 PT</div>
+                <div class="item-title">AI 기반 1:1 메타 인출 코칭 (Meta-Retrieval PT)</div>
                 <div class="info-box">"말로 명확히 설명하지 못하면 결코 아는 것이 아닙니다."</div>
                 <div class="sig-content">
-                    <h4>골든타임을 사수하는 5분 능동 인출 (EDEN_CUE)</h4>
-                    <p>강의나 자습이 끝난 직후 단 5분, 배운 핵심 내용을 백지에 스스로 요약하고 구조화합니다. 눈으로만 읽고 넘어가는 휘발성 학습을 막고, 뇌를 자극해 개념을 직접 끄집어내는 훈련을 선행합니다.</p>
-
-                    <h4>정답을 증명해 내는 1:1 대면 논리 검증</h4>
-                    <p>멘토가 일방적으로 정답을 알려주지 않습니다. 학생이 직접 작성한 인출 노트를 바탕으로 문제 풀이의 핵심 발상과 선지 선택의 논리적 근거를 스스로 입 밖으로 꺼내어 설명하도록 집요하게 검증합니다.</p>
-
-                    <h4>오답 사고 회로의 근본적 교정</h4>
-                    <p>오답을 만들어내는 학생의 잘못된 사고 과정을 멘토와 함께 정밀하게 뜯어고쳐, 지식을 흔들림 없는 완벽한 장기 기억으로 각인시킵니다.</p>
+                    <p style="margin-bottom: 12px;">
+                        <strong style="color: var(--primary-color);">AI 심층 분석 및 24시간 초밀착 질의응답</strong><br>
+                        지난 20년간 누적된 수능·학평·도교육청 기출문제와 EBS 수능특강 교재를 첨단 AI로 완벽하게 심층 분석했습니다. 24시간 언제든 명쾌한 해답을 제공하는 질의응답 시스템을 구축하여 학습의 흐름이 끊기지 않도록 지원합니다.
+                    </p>
+                    <p style="margin-bottom: 12px;">
+                        <strong style="color: var(--primary-color);">메타인지 기반 기출·EBS 완벽 연동 학습</strong><br>
+                        수능특강 단원에 맞춰 AI가 정밀 분석한 맞춤형 기출 자료를 메타인지 방식으로 학습합니다. 전 과목 수능 기출과 월별 모의고사의 핵심 개념을 반복 훈련하며, 단순 암기를 넘어 출제자의 진짜 의도를 꿰뚫는 시각을 기릅니다.
+                    </p>
+                    <p>
+                        <strong style="color: var(--primary-color);">골든타임 5분 인출 노트 & 1:1 대면 점검</strong><br>
+                        학습 직후 단 5분, 배운 핵심 내용을 '인출 노트'에 스스로 요약하고 백지에 쏟아내는 능동적 훈련을 선행합니다. 이후 전문 코칭 선생님과의 1:1 대면 점검을 통해 문제 풀이의 핵심 발상과 논리적 근거를 직접 입 밖으로 꺼내어 설명하도록 집요하게 검증하여 완벽한 장기 기억을 완성합니다.
+                    </p>
                 </div>
             </div>
 
             <!-- 시그너처 2: 메타PRO 분석 -->
             <div class="life-item">
-                <div class="item-title">2. 메타PRO 분석</div>
+                <div class="item-title">수능 메타PRO분석</div>
                 <div class="info-box">"데이터는 거짓말을 하지 않습니다. 숨은 점수를 찾아냅니다."</div>
                 <div class="sig-content">
-                    <p class="intro-p">문제 풀이 습관, 무의식적인 인지 오류, 심리적 흔들림까지 정밀 추적하는 이든만의 독보적인 진단 시스템입니다.</p>
-                    
-                    <h4>'앎의 착각'을 깨부수는 정밀 인지 해부</h4>
-                    <p>운 좋게 맞춘 문제 뒤에 숨은 거품을 완벽히 제거합니다. 아는 것과 모르는 것을 완벽하게 분리하는 메타인지 추적 기술을 통해, 성적 정체의 진짜 원인을 명확하게 규명합니다.</p>
-
-                    <h4>시행착오를 제로(Zero)로 만드는 초효율 약점 타격</h4>
-                    <p>의미 없는 '양치기 공부'를 철저히 배제합니다. 수많은 문항 중 학생의 성적을 가장 빠르게 올릴 수 있는 핵심 약점의 우선순위를 도출하여 한정된 자습 시간의 가치를 극대화합니다.</p>
-
-                    <h4>실전 시험장을 지배하는 데이터 내비게이션</h4>
-                    <p>취약 단원과 시간 부족의 근본 원인까지 과학적으로 분석합니다. 구체적인 수치와 리포트로 시각화하여 학생에게 흔들리지 않는 명확한 합격 로드맵을 제시합니다.</p>
+                    <p style="margin-bottom: 15px; color: var(--text-light); font-size: 0.95rem;">
+                        단순한 채점은 '몇 점인지'만 알려주지만, 메타Pro 분석은 <strong>'채점 후 어디에 공부 시간을 집중적으로 투자해야 하는지'</strong>를 정확히 짚어주는 내비게이션입니다.
+                    </p>
+                    <p style="margin-bottom: 10px;">
+                        <strong style="color: var(--primary-color);">낭비되는 공부 시간 원천 차단</strong><br>
+                        학생들은 종종 이미 확실히 아는 문제를 다시 풀며 공부했다는 착각에 빠집니다. 메타인지 방식을 통해 진짜 아는 문제와 운으로 맞힌 점수를 철저히 분리하여, 불필요한 학습에 낭비되는 시간을 원천 차단합니다.
+                    </p>
+                    <p style="margin-bottom: 10px;">
+                        <strong style="color: var(--primary-color);">진짜 투자해야 할 취약점 타격</strong><br>
+                        오답의 근본 원인을 깊이 있게 해부하여, 학생이 1분 1초도 헛되이 쓰지 않고 집중적으로 파고들어야 할 '진짜 약점' 영역만을 명확하게 짚어냅니다.
+                    </p>
+                    <p>
+                        <strong style="color: var(--primary-color);">정밀 보고서 및 1:1 맞춤 처방</strong><br>
+                        이 분석 결과를 과목별 3쪽 분량의 시각화된 보고서로 제공하여 뚜렷한 동기를 부여합니다. 이를 바탕으로 멘토가 1:1 역질문 PT를 진행해 학생에게 가장 시급한 최적의 맞춤 학습을 처방합니다.
+                    </p>
                 </div>
             </div>
         </div>
@@ -1293,39 +1426,39 @@
         </style>
 
         <div class="contact-form-container">
-            <form>
+            <form id="admission-form">
                 <div class="form-group">
                     <label>학생 이름</label>
-                    <input type="text" placeholder="예: 홍길동">
+                    <input type="text" id="form-name" placeholder="예: 홍길동" required>
                 </div>
                 <div class="form-group">
                     <label>학교 / 학년</label>
-                    <input type="text" placeholder="예: 미사고등학교 / 고3">
+                    <input type="text" id="form-school" placeholder="예: 미사고등학교 / 고3" required>
                 </div>
                 <div class="grid-container" style="grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
                     <div class="form-group" style="margin-bottom: 0;">
                         <label>학생 연락처</label>
-                        <input type="tel" placeholder="010-0000-0000">
+                        <input type="tel" id="form-student-phone" placeholder="010-0000-0000" required>
                     </div>
                     <div class="form-group" style="margin-bottom: 0;">
                         <label>학부모 연락처</label>
-                        <input type="tel" placeholder="010-0000-0000">
+                        <input type="tel" id="form-parent-phone" placeholder="010-0000-0000" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label>관심 분야 (중복 선택 가능)</label>
-                    <div class="checkbox-group">
-                        <label class="checkbox-item"><input type="checkbox"> 재수 정시반</label>
-                        <label class="checkbox-item"><input type="checkbox"> 재학생반</label>
-                        <label class="checkbox-item"><input type="checkbox"> 썸머스쿨</label>
-                        <label class="checkbox-item"><input type="checkbox"> 윈터스쿨</label>
-                        <label class="checkbox-item"><input type="checkbox"> 약술형논술</label>
-                        <label class="checkbox-item"><input type="checkbox"> 영어특강</label>
+                    <div class="checkbox-group" id="form-interests">
+                        <label class="checkbox-item"><input type="checkbox" value="재수 정시반"> 재수 정시반</label>
+                        <label class="checkbox-item"><input type="checkbox" value="재학생반"> 재학생반</label>
+                        <label class="checkbox-item"><input type="checkbox" value="썸머스쿨"> 썸머스쿨</label>
+                        <label class="checkbox-item"><input type="checkbox" value="윈터스쿨"> 윈터스쿨</label>
+                        <label class="checkbox-item"><input type="checkbox" value="약술형논술"> 약술형논술</label>
+                        <label class="checkbox-item"><input type="checkbox" value="영어특강"> 영어특강</label>
                     </div>
                 </div>
                 <div class="form-group">
                     <label>문의 및 요청사항</label>
-                    <textarea rows="5" placeholder="궁금하신 내용을 자세히 적어주실수록 정확한 상담이 가능합니다."></textarea>
+                    <textarea id="form-message" rows="5" placeholder="궁금하신 내용을 자세히 적어주실수록 정확한 상담이 가능합니다."></textarea>
                 </div>
                 <button type="submit" class="cta-button" style="width: 100%; border: none; cursor: pointer;">온라인 상담 문의 신청서 제출하기</button>
             </form>
@@ -1335,6 +1468,89 @@
     <footer style="padding: 50px 10%; background: #2d3748; color: #fff; text-align: center;">
         <p>© 2026 이든관리형학습센터. All rights reserved.</p>
     </footer>
+
+    <script>
+        // 상단 네비게이션(GNB) 링크 클릭 시 모바일 메뉴가 자동으로 닫히도록 설정
+        const menuLinks = document.querySelectorAll('nav ul li a');
+        const menuToggle = document.getElementById('menu-toggle');
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (menuToggle) menuToggle.checked = false;
+            });
+        });
+
+        // 커뮤니티 섹션의 하위 바로가기 버튼 클릭 시 버튼 그룹이 화면에서 사라지도록 설정
+        const shortcutGroup = document.querySelector('.community-shortcuts');
+        const shortcutBtns = document.querySelectorAll('.shortcut-btn');
+        
+        shortcutBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (shortcutGroup) {
+                    shortcutGroup.style.display = 'none';
+                }
+            });
+        });
+
+        // 상담 신청서 폼 전송 로직 (문자 전송 연동)
+        const admissionForm = document.getElementById('admission-form');
+        if (admissionForm) {
+            admissionForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const name = document.getElementById('form-name').value;
+                const school = document.getElementById('form-school').value;
+                const sPhone = document.getElementById('form-student-phone').value;
+                const pPhone = document.getElementById('form-parent-phone').value;
+                const message = document.getElementById('form-message').value;
+                
+                // 체크된 관심분야 수집
+                const interests = [];
+                document.querySelectorAll('#form-interests input:checked').forEach(cb => {
+                    interests.push(cb.value);
+                });
+
+                // 메시지 내용 구성
+                const smsBody = `[이든 상담신청]\n이름: ${name}\n학교/학년: ${school}\n학생번호: ${sPhone}\n학부모번호: ${pPhone}\n관심분야: ${interests.join(', ')}\n문의내용: ${message}`;
+
+                // SMS 앱 호출 (모바일 환경에서 즉시 작동)
+                const targetNumber = '01084422817';
+                window.location.href = `sms:${targetNumber}?body=${encodeURIComponent(smsBody)}`;
+            });
+        }
+
+        // 팝업 로직
+        window.addEventListener('load', () => {
+            const popup = document.getElementById('summer-popup');
+            const closeBtn = document.getElementById('close-popup');
+            const hideToday = document.getElementById('hide-today');
+            const applyBtn = document.getElementById('popup-apply-btn');
+
+            // 오늘 하루 보지 않기 체크 여부 확인
+            const isHidden = localStorage.getItem('hideSummerPopup');
+            const now = new Date().getTime();
+
+            if (!isHidden || now > parseInt(isHidden)) {
+                setTimeout(() => {
+                    popup.classList.add('active');
+                }, 800);
+            }
+
+            const closePopup = () => {
+                if (hideToday.checked) {
+                    const expiry = new Date().getTime() + (24 * 60 * 60 * 1000); // 24시간 후
+                    localStorage.setItem('hideSummerPopup', expiry);
+                }
+                popup.classList.remove('active');
+            };
+
+            closeBtn.addEventListener('click', closePopup);
+            applyBtn.addEventListener('click', () => popup.classList.remove('active'));
+            popup.addEventListener('click', (e) => {
+                if (e.target === popup) closePopup();
+            });
+        });
+    </script>
 
 </body>
 </html>
